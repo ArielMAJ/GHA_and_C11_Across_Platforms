@@ -16,6 +16,9 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+    - uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
     - uses: actions/checkout@v3
     - name: Testing printf
       run: |
