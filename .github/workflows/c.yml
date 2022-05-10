@@ -20,6 +20,8 @@ jobs:
       with:
         msystem: MINGW64
         path-type: inherit
+        update: true
+        location: C:\MSYS2\
     - uses: actions/checkout@v3
     - name: Testing printf
       run: |
