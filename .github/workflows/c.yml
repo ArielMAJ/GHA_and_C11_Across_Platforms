@@ -1,0 +1,39 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Testing
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+permissions:
+  contents: read
+
+jobs:
+  unix_tests:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Testing printf
+      run: |
+        gcc -std=c11 -o test.exe test.c
+        ./test.exe
+
+  windows_tests:
+    strategy:
+      matrix:
+        os: [windows-2019, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Testing printf
+      run: |
+        gcc -std=c11 -o test.exe test.c
+        ./test.exe
