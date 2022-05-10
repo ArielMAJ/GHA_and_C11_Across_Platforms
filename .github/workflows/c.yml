@@ -12,20 +12,12 @@ jobs:
   unix_tests:
     strategy:
       matrix:
-        os: [windows-latest, windows-2019] # , ubuntu-latest, ubuntu-18.04, macos-latest]
+        os: [windows-latest, windows-2019, ubuntu-latest, ubuntu-18.04, macos-latest]
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: msys2/setup-msys2@v2
-      with:
-        msystem: MINGW64
-        path-type: inherit
-        location: C:\MSYS2\
     - uses: actions/checkout@v3
     - name: Testing printf
       run: |
         gcc -std=c11 -o test.exe test.c
         ./test.exe
-        cd C:\MSYS2\
-        ls
-        dir
