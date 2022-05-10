@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 int main(void)
 {
@@ -12,6 +13,10 @@ int main(void)
 	
 	// Should print 4
 	printf("%d\n", sizeof(float));
+	
+	// Should print 2 on -std=c11
+	printf("%.0f\n", 2.5);
+	printf("%.0f\n", round(2.5));
 	
 	return 0;
 }
