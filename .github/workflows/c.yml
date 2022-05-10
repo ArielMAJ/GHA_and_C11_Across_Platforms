@@ -20,10 +20,12 @@ jobs:
       with:
         msystem: MINGW64
         path-type: inherit
-        update: true
         location: C:\MSYS2\
     - uses: actions/checkout@v3
     - name: Testing printf
       run: |
         gcc -std=c11 -o test.exe test.c
         ./test.exe
+        cd C:\MSYS2\
+        ls
+        dir
